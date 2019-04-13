@@ -14,5 +14,6 @@
 <script src="<?php echo base_url('assets/alert') ?>/jquery.bootstrap-growl.js"></script>
 <!-- sweatalert -->
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="<?php echo base_url() ?>assets/datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <?php echo "<script>".$this->session->flashdata('message')."</script>"?>
 <?php echo "<script>".$this->session->flashdata('alert')."</script>"?>

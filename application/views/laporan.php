@@ -78,7 +78,7 @@
                             <label class="control-label col-xs-3" > Dari Tanggal</label>
                             <div class="col-xs-9">
                                 <div class='input-group date' id='datepicker' style="width:300px;">
-                                    <input type='date' name="mulai" class="form-control" value="" placeholder="Tanggal..." required/>
+                                    <input type='text' name="mulai" class="form-control datepicker" value="" placeholder="Tanggal..." required/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -89,7 +89,7 @@
                             <label class="control-label col-xs-3" > Sampai Tanggal</label>
                             <div class="col-xs-9">
                                 <div class='input-group date' id='datepicker' style="width:300px;">
-                                    <input type='date' name="sampai" class="form-control" value="" placeholder="Tanggal..." required/>
+                                    <input type='text' name="sampai" class="form-control datepicker" value="" placeholder="Tanggal..." required/>
                                     <span class="input-group-addon">
                                         <span class="glyphicon glyphicon-calendar"></span>
                                     </span>
@@ -149,5 +149,16 @@
 
 <!-- script -->
 <?php $this->load->view('include/base_js'); ?>
+<script type="text/javascript">
+             $(function(){
+                var date = new Date();
+                date.setDate(date.getDate());
+
+              $(".datepicker").datepicker({
+                  format: 'yyyy-mm-dd',
+                  autoclose: true,
+              });
+             });
+            </script>
 </body>
 </html>

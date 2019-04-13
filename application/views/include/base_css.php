@@ -6,3 +6,4 @@
   <link rel="stylesheet" href="<?php echo base_url('assets') ?>/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/datepicker/dist/css/bootstrap-datepicker.min.css">

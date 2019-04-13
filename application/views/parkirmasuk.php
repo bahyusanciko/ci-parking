@@ -100,7 +100,7 @@
                         <td><?php echo strtoupper($row['nama_kendaraan']) ?></td>
                         <td><?php echo date('H:i:s',strtotime($row['tgl_masuk'])) ?></td>
                         <td><?php echo $row['create_masuk'] ?></td>
-                        <td><a href="<?php echo base_url('masuk/cetakstruk/'.$row['kd_masuk']) ?>"><i class="fa fa-barcode"></i></a> | <a href=""><i class="fa fa-trash"></i></a></td>
+                        <td><a href="<?php echo base_url('masuk/cetakstruk/'.$row['kd_masuk']) ?>"><i class="fa fa-barcode"></i></a> | <a href="<?php echo base_url('masuk/delete/'.$row['kd_masuk']) ?>"><i class="fa fa-trash"></i></a></td>
                       </tr>
                     <?php } ?>
                       </tfoot>

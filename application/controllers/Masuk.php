@@ -61,6 +61,32 @@ class Masuk extends CI_Controller {
             	});');
 		redirect('masuk');
 	}
+	public function delete($id=''){
+		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE kd_masuk LIKE '".$id."'")->row_array();
+		if ($sqlcek) {
+			$this->db->where('kd_masuk', $id); 
+			$this->db->delete('tbl_masuk'); 
+			$this->session->set_flashdata('alert', '$(function() {
+                $.bootstrapGrowl("Kode Karcis Dihapus",{
+                		type: "danger",
+                        align: "right",
+                        width: "auto",
+                        allow_dismiss: false
+                });
+            	});');
+			redirect('masuk');
+		}else{
+			$this->session->set_flashdata('alert', '$(function() {
+                $.bootstrapGrowl("Kode Karcis Tidak Ada",{
+                		type: "danger",
+                        align: "right",
+                        width: "auto",
+                        allow_dismiss: false
+                });
+            	});');
+			redirect('masuk');
+		}
+	}
 	public function cetakstruk($id=''){
 		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE kd_masuk LIKE '".$id."'")->row_array();
 		// die(print_r($sqlcek));
@@ -88,6 +114,12 @@ class Masuk extends CI_Controller {
             	});');
 			redirect('masuk');
 		}
+	}
+	public function listkendaraanmasuk($value=''){
+		$data['title'] = 'List Kendaraan Yang Belum Keluar';
+		$data['masuk'] = $this->db->query("SELECT * FROM tbl_masuk RIGHT JOIN tbl_kendaraan ON tbl_masuk.kd_kendaraan = tbl_kendaraan.kd_kendaraan WHERE status_masuk LIKE '1'")->result_array();
+		// die(print_r($data));
+		$this->load->view('listkendaraan', $data, FALSE);
 	}
 }
 

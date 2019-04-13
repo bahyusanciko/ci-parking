@@ -101,6 +101,23 @@ class Keluar extends CI_Controller {
 			redirect('keluar');
 		}
 	}
+	public function historyplat($value=''){
+		$id = strtoupper($this->input->post('kode'));
+		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE plat_masuk = '".$id."'")->result_array();
+		if ($sqlcek) {
+			print_r($sqlcek);
+		}else{
+			$this->session->set_flashdata('alert', '$(function() {
+                $.bootstrapGrowl("No Plat Tidak Ada",{
+                		type: "danger",
+                        align: "right",
+                        width: "auto",
+                        allow_dismiss: false
+                });
+            	});');
+			redirect('keluar');	
+		}
+	}
 	public function cetakstruk($id=''){
 		$sqlcek = $this->db->query("SELECT * FROM tbl_keluar RIGHT JOIN tbl_masuk ON tbl_masuk.kd_masuk = tbl_masuk.kd_masuk WHERE kd_keluar LIKE '".$id."'")->row_array();
 		// die(print_r($sqlcek));

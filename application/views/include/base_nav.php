@@ -10,9 +10,9 @@
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3" action="" method="post">
+    <form class="form-inline ml-3" action="<?php echo base_url('keluar/historyplat') ?>" method="post">
       <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Cari History Plat" aria-label="Search">
+        <input class="form-control form-control-navbar" type="search" name="kode" placeholder="Cari History Plat" aria-label="Search">
         <div class="input-group-append">
           <button class="btn btn-navbar" type="submit">
             <i class="fa fa-search"></i>
@@ -86,6 +86,12 @@
             <a href="<?php echo base_url('keluar') ?>" class="nav-link">
               <i class="nav-icon fa fa-fa fa-arrow-circle-o-right  "></i>
               <p>Parkir Keluar</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('masuk/listkendaraanmasuk') ?>" class="nav-link">
+              <i class="nav-icon fa fa-list-alt"></i>
+              <p>List Kendaraan Masuk</p>
             </a>
           </li>
           <?php if ($this->session->userdata('level') == '1') { ?>
