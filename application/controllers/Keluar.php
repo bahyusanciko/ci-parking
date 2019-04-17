@@ -101,9 +101,10 @@ class Keluar extends CI_Controller {
 			redirect('keluar');
 		}
 	}
-	public function historyplat($value=''){
+	public function historyplat(){
 		$id = strtoupper($this->input->post('kode'));
 		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE plat_masuk = '".$id."'")->result_array();
+				// die(print_r($sqlcek));
 		if ($sqlcek) {
 			print_r($sqlcek);
 		}else{

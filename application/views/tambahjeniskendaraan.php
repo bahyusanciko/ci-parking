@@ -55,6 +55,13 @@
                    <?php echo form_error('Nama'),'<small class="text-danger pl-3">','</small>'; ?>
                   </div>
                   <div class="form-group">
+                    <select class="form-control" name="tipe" required="">
+                      <option value="" selected disabled="">Pilih Katagori</option>
+                      <option value="1" >NON MEMBER</option>
+                      <option value="2" >MEMBER</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
                     <label for="">Harga</label>
                     <div class="input-group">
                     <div class="input-group-prepend">

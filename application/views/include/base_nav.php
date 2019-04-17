@@ -29,7 +29,10 @@
           <i class="fa fa-user"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-xs dropdown-menu-right">
-          <a href="<?php echo base_url('login/logout') ?>" class="dropdown-item">
+          <a href="" data-toggle="modal" data-target="#exampleModal" class="dropdown-item">
+            <i class="fa fa-info-circle"></i> About
+          </a>
+           <a href="<?php echo base_url('login/logout') ?>" class="dropdown-item">
             <i class="fa fa-sign-out"></i> Keluar
           </a>
       </li>
@@ -92,6 +95,12 @@
             <a href="<?php echo base_url('masuk/listkendaraanmasuk') ?>" class="nav-link">
               <i class="nav-icon fa fa-list-alt"></i>
               <p>List Kendaraan Masuk</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo base_url('member') ?>" class="nav-link">
+              <i class="nav-icon fa fa-users"></i>
+              <p>Member Kendaraan</p>
             </a>
           </li>
           <?php if ($this->session->userdata('level') == '1') { ?>

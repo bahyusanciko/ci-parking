@@ -46,11 +46,35 @@ class JenisKendaraan extends CI_Controller {
 				'kd_kendaraan' => $this->get_kod(),
 				'nama_kendaraan' => $this->input->post('nama'),
 				'harga_kendaraan' => $this->input->post('harga'),
+				'jenis_kendaraan' => $this->input->post('tipe'),
 				'create_by_kendaraan' => $this->session->userdata('username_admin')
 				 );
+			// die(print_r($data));
 			$this->db->insert('tbl_kendaraan', $data);
 			$this->session->set_flashdata('message', 'swal("Berhasil", "Berhasil Tambah Jenis Kendaraan", "success");');
     		redirect('jeniskendaraan');
+		}
+	}
+	public function view($id=''){
+		$sqlcek = $this->db->query("SELECT * FROM tbl_kendaraan WHERE kd_kendaraan = '".$id."'")->row_array();
+				// die(print_r($sqlcek));
+		if ($sqlcek) {
+			$data = array(
+				'kendaraan' => $sqlcek,
+				'title'		=> 'VIEW'
+				 );
+							// die(print_r($data));
+			$this->load->view('viewkendaraan', $data, FALSE);
+		}else{
+			$this->session->set_flashdata('alert', '$(function() {
+                $.bootstrapGrowl("Jenis Tidak Ada",{
+                		type: "danger",
+                        align: "right",
+                        width: "auto",
+                        allow_dismiss: false
+                });
+            	});');
+			redirect('jeniskendaraan');	
 		}
 	}
 }

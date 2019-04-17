@@ -22,7 +22,7 @@ use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
         $printer -> setJustification(Printer::JUSTIFY_LEFT);
         $printer -> text("Lama Parkir : ".$cetak['lama_parkir_keluar']."\n");
         $printer -> feed();
-        $printer -> text("Sewa Kasir   : Rp ".$cetak['total_keluar']);
+        $printer -> text("Sewa Parkir   : Rp ".$cetak['total_keluar']);
         $printer -> feed(3);
         $printer -> selectPrintMode();
         $printer -> text("TERIMA KASIH ATAS KUNJUNGAN ANDA");

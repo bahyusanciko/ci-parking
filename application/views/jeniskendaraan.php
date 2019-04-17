@@ -49,6 +49,7 @@
                 <tr>
                   <th>Kode Kendaraan</th>
                   <th>Nama Jenis</th>
+                  <th>Katagori</th>
                   <th>Tarif</th>
                   <th>Aksi</th>
                 </tr>
@@ -58,6 +59,12 @@
                 <tr>
                   <td><?php echo $row['kd_kendaraan'] ?></td>
                   <td><?php echo strtoupper($row['nama_kendaraan']) ?></td>
+                  <td><?php if ($row['jenis_kendaraan'] == '1') { ?>
+                    <b class="btn-primary">NON MEMBER</b>
+                  <?php }else{ ?> 
+                    <b class="btn-primary">MEMBER</b>
+                  <?php } ?>
+                  </td>
                   <td>Rp <?php echo $row['harga_kendaraan'] ?></td>
                   <td align="center"><a href="<?php echo base_url('jeniskendaraan/view/'.$row['kd_kendaraan']) ?>" class="btn btn-default">VIEW</a></td>
                 </tr>
