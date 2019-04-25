@@ -11,7 +11,7 @@ class Masuk extends CI_Controller {
 	public function index(){
 		$data['title'] = 'Parkir Masuk';
 		$data['jenis'] = $this->db->query("SELECT * FROM tbl_kendaraan WHERE jenis_kendaraan = '1'")->result_array();
-		$data['masuk'] = $this->db->query("SELECT * FROM tbl_masuk RIGHT JOIN tbl_kendaraan ON tbl_masuk.kd_kendaraan = tbl_kendaraan.kd_kendaraan WHERE tgl_masuk LIKE '".date('Y-m-d')."%' AND status_masuk LIKE '1'")->result_array();
+		$data['masuk'] = $this->db->query("SELECT * FROM tbl_masuk RIGHT JOIN tbl_kendaraan ON tbl_masuk.kd_kendaraan = tbl_kendaraan.kd_kendaraan WHERE tgl_masuk LIKE '".date('Y-m-d')."%' AND status_masuk = '1'")->result_array();
 		// die(print_r($data));
 		$this->load->view('parkirmasuk', $data, FALSE);
 	}
@@ -44,10 +44,11 @@ class Masuk extends CI_Controller {
 		$member = $this->input->post('member');
 		if ($member == NULL) {
 			if ($jenis) {
-				$sqlcek_masuk = $this->db->query("SELECT * FROM tbl_masuk WHERE plat_masuk LIKE '".$plat." ".$nomor." ".$back."' AND status_masuk LIKE '1' ")->row_array();
+				$sqlcek_masuk = $this->db->query("SELECT * FROM tbl_masuk WHERE plat_masuk = '".$plat." ".$nomor." ".$back."' AND status_masuk = '1' ")->row_array();
 			if ($sqlcek_masuk == NULL) {
 				$data = array(
 			'kd_masuk' => $this->get_kod(),
+			'kd_member' => 'NULL',
 			'kd_kendaraan' => $this->input->post('jenis'),
 			'plat_masuk' 	=> $plat." ".$nomor." ".$back,
 			'tgl_masuk'		=> date('Y-m-d H:i:s'),
@@ -89,12 +90,13 @@ class Masuk extends CI_Controller {
 				redirect('masuk');	
 			}
 		}else{
-			$sqlcek = $this->db->query("SELECT * FROM tbl_member WHERE kd_member LIKE '".$member."'")->row_array();
+			$sqlcek = $this->db->query("SELECT * FROM tbl_member WHERE kd_member = '".$member."'")->row_array();
 			if ($sqlcek) {
-				$sqlcek_masuk = $this->db->query("SELECT * FROM tbl_masuk WHERE plat_masuk LIKE '".$sqlcek['plat_member']."' AND status_masuk LIKE '1' ")->row_array();
+				$sqlcek_masuk = $this->db->query("SELECT * FROM tbl_masuk WHERE plat_masuk = '".$sqlcek['plat_member']."' AND status_masuk = '1' ")->row_array();
 				if ($sqlcek_masuk == NULL) {
 					$data = array(
 					'kd_masuk' => $this->get_kod(),
+					'kd_member' => $sqlcek['kd_member'],
 					'kd_kendaraan' => $sqlcek['kd_kendaraan'],
 					'plat_masuk' 	=> $sqlcek['plat_member'],
 					'tgl_masuk'		=> date('Y-m-d H:i:s'),
@@ -104,7 +106,7 @@ class Masuk extends CI_Controller {
 					// die(print_r($data));
 					$this->db->insert('tbl_masuk', $data);
 					$data['cetak'] = $data;
-					$this->load->view('cetakparkir', $data);
+					// $this->load->view('cetakparkir', $data);
 					$this->session->set_flashdata('alert', '$(function() {
 			                $.bootstrapGrowl("Karcis Sudah Dibuat",{
 			                		type: "success",
@@ -139,7 +141,7 @@ class Masuk extends CI_Controller {
 		}
 	}
 	public function delete($id=''){
-		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE kd_masuk LIKE '".$id."'")->row_array();
+		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE kd_masuk = '".$id."'")->row_array();
 		if ($sqlcek) {
 			$this->db->where('kd_masuk', $id); 
 			$this->db->delete('tbl_masuk'); 
@@ -165,7 +167,7 @@ class Masuk extends CI_Controller {
 		}
 	}
 	public function cetakstruk($id=''){
-		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE kd_masuk LIKE '".$id."'")->row_array();
+		$sqlcek = $this->db->query("SELECT * FROM tbl_masuk WHERE kd_masuk = '".$id."'")->row_array();
 		// die(print_r($sqlcek));
 		if ($sqlcek) {
 			$data['cetak'] = $sqlcek;
@@ -194,7 +196,7 @@ class Masuk extends CI_Controller {
 	}
 	public function listkendaraanmasuk($value=''){
 		$data['title'] = 'List Kendaraan Yang Belum Keluar';
-		$data['masuk'] = $this->db->query("SELECT * FROM tbl_masuk RIGHT JOIN tbl_kendaraan ON tbl_masuk.kd_kendaraan = tbl_kendaraan.kd_kendaraan WHERE status_masuk LIKE '1'")->result_array();
+		$data['masuk'] = $this->db->query("SELECT * FROM tbl_masuk RIGHT JOIN tbl_kendaraan ON tbl_masuk.kd_kendaraan = tbl_kendaraan.kd_kendaraan WHERE status_masuk = '1'")->result_array();
 		// die(print_r($data));
 		$this->load->view('listkendaraan', $data, FALSE);
 	}

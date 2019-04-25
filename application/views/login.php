@@ -51,6 +51,10 @@
       <!-- /.login-card-body -->
     </div>
   </div>
+  <footer class="text-center" align="center">
+    <marquee width="500" height="40">Untuk Admin Login : admin Password : admin</marquee> <br>
+    <marquee width="500" height="40">Untuk Owner Login : owner Password : owner</marquee>
+    </footer> 
   <!-- /.login-box -->
   <!-- jQuery -->
   <script src="<?php echo base_url('assets') ?>/plugins/jquery/jquery.min.js"></script>

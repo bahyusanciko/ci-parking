@@ -61,7 +61,7 @@
                     <td><?php echo $row['nama_member'] ?></td>
                     <td><?php echo $row['plat_member'] ?></td>
                     <td><b class="btn-primary"><?php echo $row['nama_kendaraan'] ?></b></td>
-                    <td><a href="<?php echo base_url('member/view/'.$row['kd_kendaraan']) ?>" class="btn btn-default">VIEW</a></td>
+                    <td><a href="<?php echo base_url('member/view/'.$row['kd_member']) ?>" class="btn btn-default">VIEW</a></td>
                   </tr>
                 <?php } ?>
                 </tfoot>

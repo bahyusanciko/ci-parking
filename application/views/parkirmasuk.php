@@ -84,7 +84,7 @@
                         <div class="input-group">
                           <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-barcode"></i></span>
-                            <input type="text" class="form-control autocomplete" id="autocomplete1" placeholder="Kode Member" name="member">
+                            <input type="text" class="form-control" placeholder="Kode Member" name="member">
                           </div>
                         </div>
                     </div>

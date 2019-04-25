@@ -75,6 +75,10 @@
                             <label for="nama">Nomor Mesin</label>
                             <input type="text" class="form-control" id="" placeholder="Nomor Mesin Kendaraan" required="" name="no_mes" >
                           </div>
+                           <div class="form-group">
+                            <label for="nama">Kode Kartu</label>
+                            <input type="text" class="form-control" id="" placeholder="Scan kartu Member" required="" name="no_kar" >
+                          </div>
                           <div class="form-group">
                             <label for="">Harga</label>
                             <div class="input-group">

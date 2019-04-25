@@ -63,7 +63,17 @@ class Member extends CI_Controller {
     		redirect('member');
 		}
 	}
-	public function viewmember($value=''){
+	public function view($id=''){
+		$sqlcek = $this->db->query("SELECT * FROM tbl_member,tbl_kendaraan WHERE kd_member = '".$id."' AND tbl_kendaraan.kd_kendaraan = tbl_member.kd_kendaraan ")->row_array();
+		if ($sqlcek) {
+			$data['title'] = 'View Member';
+			$data['member'] = $sqlcek;
+			// die(print_r($data));
+			$this->load->view('viewmember', $data, FALSE);
+		}else{
+			$this->session->set_flashdata('message', 'swal("Gagal", "Member Tidak Ada", "error");');
+    		redirect('member');
+		}
 		$this->load->view('viewmember', FALSE);
 	}
 	public function getjenis($params){

@@ -46,7 +46,7 @@
                   <!-- form start -->
                   <form action="<?php echo base_url('keluar/kendaraankeluar') ?>" method="post">
                     <div class="card-body">
-                      <div class="form-group">
+                      <div class="form-group hidden">
                         <label for="">Kode Karcis</label>
                         <div class="input-group">
                           <div class="input-group-prepend">
@@ -56,6 +56,26 @@
                         </div>
                         <?php echo $this->session->flashdata('pesan') ?>
                       </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Member Keluar ? </label>
+                        <div class="row">
+                          <div class="col">
+                          <input type="radio" class="tampil" name="yes"> Yes
+                        </div>
+                        <div class="col">
+                          <input type="radio" class="sembunyi" name="yes">No
+                        </div>
+                      </div>
+                     </div>
+                     <div class="form-group member">
+                        <label for="">Kode Member</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fa fa-barcode"></i></span>
+                            <input type="text" class="form-control autocomplete" placeholder="Kode Member" name="member">
+                          </div>
+                        </div>
+                    </div>
                     </div>
                     <!-- /.card-body -->
                     <div class="card-footer">
@@ -130,6 +150,21 @@
             "info": true,
             "autoWidth": false
           });
+        });
+      </script>
+      <script type="text/javascript">
+        //Pertama sembunyikan elemen class gambar
+        $('.member').hide();        
+        //Ketika elemen class tampil di klik maka elemen class gambar tampil
+        $('.tampil').click(function(){
+            $('.member').show();
+            $('.hidden').hide()
+        });
+        //Ketika elemen class sembunyi di klik maka elemen class gambar sembunyi
+        $('.sembunyi').click(function(){
+        //Sembunyikan elemen class gambar
+        $('.member').hide();
+        $('.hidden').show()        
         });
       </script>
     </body>
