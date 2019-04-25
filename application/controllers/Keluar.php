@@ -59,6 +59,7 @@ class Keluar extends CI_Controller {
 				$data = array(
 					'kd_keluar' => $this->get_kod(),
 					'kd_masuk'	=> $kode,
+					'kd_member' => 'NULL',
 					'tgl_jam_masuk' => $sqlcek['tgl_masuk'],
 					'tgl_jam_keluar' => date("Y-m-d H:i:s",$akhir),
 					'lama_parkir_keluar' =>  $jam .  ' Jam,' . floor( $menit / 60 ) . ' Menit',
@@ -107,12 +108,13 @@ class Keluar extends CI_Controller {
 				$this->db->update('tbl_masuk', $update, $where);
 				$data = array(
 					'kd_keluar' => $this->get_kod(),
+					'kd_member' => $sqlcek_member['kd_member'],
 					'kd_masuk'	=> $sqlcek_member['kd_masuk'],
 					'tgl_jam_masuk' => $sqlcek_member['tgl_masuk'],
 					'tgl_jam_keluar' => date("Y-m-d H:i:s",$akhir),
 					'lama_parkir_keluar' =>  $jam .  ' Jam,' . floor( $menit / 60 ) . ' Menit',
 					'tarif_keluar' => $sqlcek_member['harga_kendaraan'],
-					'total_keluar' => $sqlcek_member['kd_member'],
+					'total_keluar' => 0,
 					'status_keluar' => 1,
 					'create_keluar' => $this->session->userdata('nama_admin')
 					 );
