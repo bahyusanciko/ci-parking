@@ -1,4 +1,4 @@
-# TParkirin-Aja
+# Parkirin-Aja
 
 [![GoDoc](https://godoc.org/github.com/tj/go-config?status.svg)](https://godoc.org/github.com/tj/go-config)
 ![](https://img.shields.io/badge/license-MIT-blue.svg)
