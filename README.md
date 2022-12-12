@@ -1,4 +1,4 @@
-<p align="center"><img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/parking-156-376998.png"></p>
+<p align="center"><img src="https://cdn-icons-png.flaticon.com/512/3774/3774090.png"></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
